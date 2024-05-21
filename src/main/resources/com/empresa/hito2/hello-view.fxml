@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.myapp.controllers.MainController">
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.empresa.hito2.MainController">
     <children>
         <Label text="CRUD Application"/>
         <TextField fx:id="inputField" promptText="Enter something"/>
