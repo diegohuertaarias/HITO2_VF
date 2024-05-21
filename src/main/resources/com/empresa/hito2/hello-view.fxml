@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.myapp.controllers.MainController">
+    <children>
+        <Label text="CRUD Application"/>
+        <TextField fx:id="inputField" promptText="Enter something"/>
+        <Button text="Create" onAction="#handleCreate"/>
+        <ListView fx:id="listView"/>
+        <Button text="Delete" onAction="#handleDelete"/>
+    </children>
+</VBox>
