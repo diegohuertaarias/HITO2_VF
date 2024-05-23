@@ -205,10 +205,7 @@ public class MainController {
             FindIterable<Document> filteredDocs;
             switch (selectedFilter) {
                 case "Precio alto":
-                    filteredDocs = collection.find().sort(new Document("precio", -1)); // Orden descendente
-                    break;
-                case "Precio bajo":
-                    filteredDocs = collection.find().sort(new Document("precio", 1)); // Orden ascendente
+                    filteredDocs = collection.find().sort(new Document("unidades", -1)); // Orden descendente
                     break;
                 case "Orden alfabético":
                     filteredDocs = collection.find().sort(new Document("nombre", 1)); // Orden ascendente
