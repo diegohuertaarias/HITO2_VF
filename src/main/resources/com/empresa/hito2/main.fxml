@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.lang.String?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.empresa.hito2.MainController">
+    <VBox alignment="TOP_CENTER" spacing="20.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+        <TableView fx:id="productTable" prefHeight="300.0" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Nombre" />
+                <TableColumn fx:id="unitsColumn" prefWidth="150.0" text="Unidades" />
+                <TableColumn fx:id="priceColumn" prefWidth="150.0" text="Precio" />
+            </columns>
+        </TableView>
+        <GridPane hgap="10.0" vgap="10.0">
+            <Label text="Nombre:" />
+            <TextField fx:id="nameField" GridPane.columnIndex="1" />
+            <Label text="Unidades:" GridPane.rowIndex="1" />
+            <TextField fx:id="unitsField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Precio:" GridPane.rowIndex="2" />
+            <TextField fx:id="priceField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <HBox alignment="CENTER" spacing="10">
+            <Label text="Filtrar por:" />
+            <ChoiceBox fx:id="filterChoiceBox" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Precio alto" />
+                        <String fx:value="Precio bajo" />
+                        <String fx:value="Orden alfabético" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+            <Button fx:id="applyFilterButton" onAction="#applyFilter" text="Aplicar" />
+        </HBox>
+        <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="addButton" onAction="#addProduct" text="Agregar" />
+            <Button fx:id="updateButton" onAction="#updateProduct" text="Editar" />
+            <Button fx:id="deleteButton" onAction="#deleteProduct" text="Eliminar" />
+        </HBox>
+    </VBox>
+</AnchorPane>
