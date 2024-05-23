@@ -61,7 +61,32 @@ public class LoginController {
 
     @FXML
     void register() {
-        // Implementación del método de registro
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Username and password cannot be empty.");
+            return;
+        }
+
+        try (MongoClient mongoClient = MongoClients.create("mongodb+srv://diegohuerta:1234@cluster0.len3cit.mongodb.net/")) {
+            MongoDatabase database = mongoClient.getDatabase(DATABASE_NAME);
+            MongoCollection<Document> collection = database.getCollection(COLLECTION_NAME);
+
+            Document query = new Document("username", username);
+            Document existingUser = collection.find(query).first();
+
+            if (existingUser != null) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Username already exists.");
+            } else {
+                Document newUser = new Document("username", username).append("password", password);
+                collection.insertOne(newUser);
+                showAlert(Alert.AlertType.INFORMATION, "Success", "User registered successfully!");
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to connect to the database: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void showAlert(Alert.AlertType type, String title, String message) {

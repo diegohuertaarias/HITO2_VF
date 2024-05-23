@@ -75,6 +75,9 @@ public class MainController {
             loadData(); // Recargar los datos después de agregar un nuevo producto
 
             showAlert(Alert.AlertType.INFORMATION, "Éxito", "¡Producto insertado exitosamente!");
+
+            // Limpiar los campos de texto después de agregar el producto
+            clearFields();
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Error al conectar a la base de datos: " + e.getMessage());
         }
@@ -228,6 +231,12 @@ public class MainController {
             Product product = new Product(name, units, price);
             productTable.getItems().add(product);
         }
+    }
+
+    private void clearFields() {
+        nameField.clear();
+        unitsField.clear();
+        priceField.clear();
     }
 
     private void showAlert(Alert.AlertType type, String title, String message) {
