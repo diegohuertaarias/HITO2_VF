@@ -43,6 +43,7 @@ public class MainController {
     private final String DATABASE_NAME = "Productos_Deportivos";
     private final String COLLECTION_NAME = "Productos";
 
+
     @FXML
     void initialize() {
         // Configurar las celdas de la tabla
@@ -51,7 +52,8 @@ public class MainController {
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("precio"));
 
         // Inicializar la elección de filtros
-        filterChoiceBox.getItems().addAll("Precio alto", "Precio bajo", "Orden alfabético");
+        filterChoiceBox.getItems().clear(); // Limpia las opciones existentes para evitar duplicados
+        filterChoiceBox.getItems().addAll("Precio alto", "Orden alfabético");
 
         // Cargar los datos desde la base de datos
         loadData();
